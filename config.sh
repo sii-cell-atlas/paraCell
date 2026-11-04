@@ -78,7 +78,8 @@ def VIP():
 
 cd cellxgene
 make pydist
-make install-dist
+#make install-dist
+python -m pip install --no-deps dist/cellxgene-1.1.2.tar.gz
 cd ..
 
 ## finished setting up ------
