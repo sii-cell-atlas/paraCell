@@ -6,61 +6,82 @@ channels:
 
 dependencies:
   # Core runtimes
-  - python=3.10
+  - python=3.10.22
   - r-base=4.3.2
   - pip
+  - setuptools=80.9.0
+  - wheel
 
-  # Security remediation
-  - curl>=8.4.0
-  - libcurl>=8.4.0,<9
+  # Security-remediated libraries
+  - curl=8.18.0
+  - libcurl=8.18.0
 
-  # Core scientific Python packages
-  - numpy
-  - scipy
-  - pandas
-  - h5py
-  - anndata
-  - scanpy
-  - python-igraph
-  - leidenalg
-  - scikit-learn
-  - numba
-  - matplotlib
-  - seaborn
-  - statsmodels
-  - networkx
-  - pyarrow
+  # Compiled scientific dependencies
+  - pyarrow=20.0.0
+  - h5py=3.16.0
+  - numba=0.67.0
+  - scikit-learn=1.7.2
+  - python-igraph=0.11.6
+  - leidenalg=0.10.2
 
-  # Web application
-  - flask
-  - flask-cors
-  - flask-restful
-  - flask-compress
-  - gunicorn
-  - sqlalchemy
-
-  # Utilities
+  # Utilities and build tools
   - git
   - jq
+  - make
   - pandoc
   - ipython
   - ipykernel
 
-  # Python packages unavailable or preferably
-  # installed through pip
+  # Python application dependencies
   - pip:
-      - cellxgene-gateway
-      - anndata2ri
-      - batchglm
-      - diffxpy
-      - fastobo
-      - flask-server-timing
-      - flask-talisman
-      - flatten-dict
-      - get-version
-      - jupytext
-      - legacy-api-wrap
-      - s3fs
-      - sinfo
-      - sparse
-      - tiledb
+      # Scientific stack compatible with Cellxgene 1.1.2
+      - numpy==1.22.4
+      - pandas==1.5.3
+      - scipy==1.10.1
+      - matplotlib==3.5.3
+      - contourpy==1.0.7
+      - anndata==0.8.0
+      - scanpy==1.9.3
+      - statsmodels==0.13.5
+      - umap-learn==0.5.3
+      - dask==2021.3.0
+      - fsspec==0.8.6
+
+      # VIP analysis dependencies
+      - anndata2ri==1.3.2
+      - rpy2==3.5.17
+      - batchglm==0.7.4
+      - diffxpy==0.7.4
+      - plotly==5.24.1
+      - tenacity==9.2.1
+      - sparse==0.17.0
+      - sinfo==0.3.4
+
+      # Web application
+      - cellxgene-gateway==0.4.2
+      - Flask==2.0.3
+      - Werkzeug==2.0.3
+      - flask-compress==1.24
+      - flask-cors==6.0.5
+      - flask-restful==0.3.10
+      - flask-server-timing==0.1.2
+      - flask-talisman==1.1.0
+      - flatbuffers==1.12
+      - flatten-dict==0.5.0
+      - gunicorn==26.2.0
+
+      # Data access
+      - boto3==1.43.117
+      - botocore==1.43.117
+      - s3fs==0.4.2
+      - requests==2.34.2
+
+      # Additional application utilities
+      - fastobo==0.14.2
+      - get-version==3.5.5
+      - jupytext==1.19.6
+      - nbformat==5.11.1
+      - jsonschema==4.26.0
+      - pyyaml==6.0.3
+      - sqlalchemy
+      - tqdm
