@@ -8,7 +8,7 @@ dependencies:
   # Core runtimes
   - python=3.10.22
   - r-base=4.3.2
-  - nodejs=16
+  - nodejs
   - pip
   - setuptools=80.9.0
   - wheel
