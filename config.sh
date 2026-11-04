@@ -22,11 +22,11 @@
 
 set -o errexit
 
-pythonV="$(python --version)"
-if [[ $pythonV != *"Python 3.7"* && $pythonV != *"Python 3.8"* ]]; then
-  echo "Only support Python 3.7 or 3.8"
-  exit 0
-fi
+##pythonV="$(python --version)"
+##if [[ $pythonV != *"Python 3.7"* && $pythonV != *"Python 3.8"* ]]; then
+## echo "Only support Python 3.7 or 3.8"
+##  exit 0
+##fi
 
 ## buld the cellxgene and install -----------
 
@@ -40,6 +40,12 @@ cd cellxgene
 git checkout ffcf6eb5d842972f2562c359cc2276a0fbbe77d5 # v1.1.2
 #sed -i 's|anndata>=0.7.0|anndata>=0.7.4|' 'server/requirements.txt'
 #sed -i 's|scanpy==1.4.6|scanpy==1.6.1|' 'server/requirements.txt'
+
+# Patch legacy Cellxgene dependency constraints for paraCell
+sed -i 's|numpy<=1.22|numpy<1.23|' server/requirements.txt
+sed -i 's|fsspec>=0.4.4,<0.8.0|fsspec>=0.8.6|' server/requirements.txt
+sed -i 's|numpy>=1.17.5,<=1.22|numpy>=1.17.5,<1.23|' server/requirements.txt
+
 cd ..
 
 ## update the client-side source code of cellxgene for VIP
@@ -72,7 +78,8 @@ def VIP():
 
 cd cellxgene
 make pydist
-make install-dist
+#make install-dist
+python -m pip install --no-deps dist/cellxgene-1.1.2.tar.gz
 cd ..
 
 ## finished setting up ------
