@@ -22,11 +22,11 @@
 
 set -o errexit
 
-pythonV="$(python --version)"
-if [[ $pythonV != *"Python 3.7"* && $pythonV != *"Python 3.8"* ]]; then
-  echo "Only support Python 3.7 or 3.8"
-  exit 0
-fi
+##pythonV="$(python --version)"
+##if [[ $pythonV != *"Python 3.7"* && $pythonV != *"Python 3.8"* ]]; then
+## echo "Only support Python 3.7 or 3.8"
+##  exit 0
+##fi
 
 ## buld the cellxgene and install -----------
 
