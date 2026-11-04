@@ -77,7 +77,7 @@ def VIP():
 #pip install scanpy/
 
 cd cellxgene
-make pydist
+NODE_OPTIONS=--openssl-legacy-provider make pydist
 #make install-dist
 python -m pip install --no-deps dist/cellxgene-1.1.2.tar.gz
 cd ..
